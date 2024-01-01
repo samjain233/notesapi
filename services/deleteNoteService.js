@@ -1,5 +1,6 @@
 const Notes = require("../models/Notes");
 const User = require("../models/User");
+const mongoose = require("mongoose");
 
 const deleteNoteService = async (req, res) => {
   try {
@@ -21,8 +22,8 @@ const deleteNoteService = async (req, res) => {
         .json({ status: false, error: "noteId field must be of type string." });
     }
 
-    if (noteId.length !== 24) {
-      return res.status(404).json({ status: false, error: "Invalid NoteId" });
+    if (!mongoose.Types.ObjectId.isValid(noteId)) {
+      return res.status(400).json({ status: false, error: "Invalid noteId" });
     }
     //-----------------------------------------------------------
 
