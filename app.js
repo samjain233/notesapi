@@ -17,6 +17,8 @@ app.get("/", async (req, res) => {
       status: true,
       message: "server is running",
       githubUrl: "https://github.com/samjain233/notesapi",
+      documentation:
+        "https://github.com/samjain233/notesapi/blob/main/README.md",
     };
     res.status(200).json(object);
   } catch (err) {
@@ -40,7 +42,9 @@ app.get("*", (req, res) => {
 });
 
 //listening on port 3000 --------------------------------------
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, function () {
   console.log("app listening on port : " + port);
 });
+
+module.exports = app;
