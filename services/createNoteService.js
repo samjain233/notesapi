@@ -1,10 +1,10 @@
-const client = require("../db/conn");
-const db = client.db({ dbName: process.env.dbName });
-const Notes = db.collection({name:"notes"}); //Notes collection
+const Notes = require("../models/Notes");
+const User = require("../models/User");
 
 const createNoteService = async (req, res) => {
   try {
-    console.log(db);
+    const { title, content } = req.body;
+    console.log(title,content);
     return res.send("hello");
   } catch (err) {}
 };

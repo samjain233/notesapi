@@ -1,6 +1,3 @@
-const client = require("../db/conn");
-const db = client.db({ dbName: process.env.dbName });
-const Notes = db.collection({name:"notes"}); //Notes collection
 
 const deleteNoteService = async (req, res) => {
   try {

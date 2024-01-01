@@ -8,10 +8,10 @@ const router = express.Router();
 
 router.use(express.json());
 
-router.get("/",fetchAllNotesService);
-router.get("/:noteId",fetchUniqueNoteService);
+router.get("/", fetchAllNotesService);
+router.get("/:noteId", fetchUniqueNoteService);
 router.post("/", createNoteService);
-router.patch("/:noteId",updateNoteService);
-router.delete("/:noteId",deleteNoteService);
+router.patch("/:noteId", updateNoteService);
+router.delete("/:noteId", deleteNoteService);
 
 module.exports = router;
