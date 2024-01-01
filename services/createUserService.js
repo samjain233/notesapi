@@ -1,4 +1,5 @@
 const hashPassword = require("../lib/hash");
+const { createToken } = require("../lib/token");
 const User = require("../models/User");
 
 const createUserService = async (req, res) => {
@@ -58,7 +59,6 @@ const createUserService = async (req, res) => {
 
     //existing user check------------------------------------------
     const existingUser = await User.findOne({ email: email.toLowerCase() });
-    console.log(existingUser);
     if (existingUser) {
       return res.status(400).json({
         status: false,
@@ -80,12 +80,18 @@ const createUserService = async (req, res) => {
       hash: hashedPassword,
       notes: [],
     });
-    await newUser.save();
+    const createdUser = await newUser.save();
     //--------------------------------------------------------------
+
+    //getting auth token --------------------------------------------
+    const userId = createdUser._id;
+    const token = await createToken(userId);
+    //---------------------------------------------------------------
 
     res.status(201).json({
       status: true,
       message: `User created successfully :- ${email}.`,
+      token: token,
     });
   } catch (err) {
     console.error(err);
