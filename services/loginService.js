@@ -1,10 +1,9 @@
-
-
 const loginService = async (req, res) => {
-    try {
-      console.log(db);
-      return res.send("hello");
-    } catch (err) {}
-  };
-  
-  module.exports = loginService;
+  try {
+    const { email, password } = req.body;
+
+    return res.send("hello");
+  } catch (err) {}
+};
+
+module.exports = loginService;
