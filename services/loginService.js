@@ -40,7 +40,7 @@ const loginService = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       return res
-        .status(401)
+        .status(404)
         .json({ status: false, error: "User doesn't exists." });
     }
     //---------------------------------------------------------------
@@ -50,7 +50,7 @@ const loginService = async (req, res) => {
     const verified = await verifyPassword(password, hash);
     if (!verified) {
       return res
-        .status(401)
+        .status(404)
         .json({ status: false, error: "Invalid email or password." });
     }
     //---------------------------------------------------------------
@@ -60,7 +60,7 @@ const loginService = async (req, res) => {
     const token = await createToken(userId);
     //---------------------------------------------------------------
 
-    return res.status(201).json({
+    return res.status(200).json({
       status: true,
       message: `logged in successfull :- ${email}.`,
       token: token,
