@@ -3,7 +3,11 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-// app.use("/", api);
+//importing routes
+const api = require("./routes/api");
+
+//routes
+app.use("/api", api);
 
 app.get("/", (req, res) => {
   const object = {
