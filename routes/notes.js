@@ -15,6 +15,6 @@ router.get("/", fetchAllNotesService);
 router.get("/:noteId", fetchUniqueNoteService);
 router.post("/", createNoteService);
 router.patch("/:noteId", updateNoteService);
-router.delete("/:noteId", deleteNoteService);
+router.delete("/", deleteNoteService);
 
 module.exports = router;
