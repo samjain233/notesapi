@@ -4,20 +4,42 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-//importing routes
+//importing routes---------------------------
 const api = require("./routes/api");
 
-//routes
+//routes--------------------------------------
 app.use("/api", api);
 
+//home route----------------------------------
 app.get("/", async (req, res) => {
-  const object = {
-    message: "server is running",
-    statusCode: 200,
-  };
-  res.status(200).json(object);
+  try {
+    const object = {
+      status: true,
+      message: "server is running",
+      githubUrl: "https://github.com/samjain233/notesapi",
+    };
+    res.status(200).json(object);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ status: false, error: "Internal Server Error" });
+  }
 });
 
+//wildcard route ----------------------------------------------
+app.get("*", (req, res) => {
+  try {
+    const obj = {
+      status: false,
+      error: "route doesn't exists",
+    };
+    res.status(404).json(obj);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ status: false, error: "Internal Server Error" });
+  }
+});
+
+//listening on port 3000 --------------------------------------
 const port = 3000;
 app.listen(port, function () {
   console.log("app listening on port : " + port);
