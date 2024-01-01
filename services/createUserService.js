@@ -1,4 +1,4 @@
-const hashPassword = require("../lib/hash");
+const {hashPassword} = require("../lib/hash");
 const { createToken } = require("../lib/token");
 const User = require("../models/User");
 
