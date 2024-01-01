@@ -1,4 +1,6 @@
+require("dotenv").config();
 const express = require("express");
+const client = require("./db/conn");
 
 const app = express();
 app.use(express.json());
@@ -9,7 +11,7 @@ const api = require("./routes/api");
 //routes
 app.use("/api", api);
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   const object = {
     message: "server is running",
     statusCode: 200,
