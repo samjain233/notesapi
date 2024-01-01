@@ -88,14 +88,14 @@ const createUserService = async (req, res) => {
     const token = await createToken(userId);
     //---------------------------------------------------------------
 
-    res.status(201).json({
+    return res.status(201).json({
       status: true,
       message: `User created successfully :- ${email}.`,
       token: token,
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ status: false, error: "Internal Server Error" });
+    return res.status(500).json({ status: false, error: "Internal Server Error" });
   }
 };
 
