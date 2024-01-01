@@ -4,12 +4,12 @@ const fetchAllNotesService = require("../services/fetchAllNotesService");
 const fetchUniqueNoteService = require("../services/fetchUniqueNoteService");
 const updateNoteService = require("../services/updateNoteService");
 const deleteNoteService = require("../services/deleteNoteService");
-// const authMiddleware = require("../middleware/authmiddleware");
+const authMiddleware = require("../middleware/authMiddleware");
 const router = express.Router();
 
 router.use(express.json());
 
-// router.use(authMiddleware);
+router.use(authMiddleware);
 
 router.get("/", fetchAllNotesService);
 router.get("/:noteId", fetchUniqueNoteService);
