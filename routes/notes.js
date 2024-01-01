@@ -14,7 +14,7 @@ router.use(authMiddleware);
 router.get("/", fetchAllNotesService);
 router.get("/:noteId", fetchUniqueNoteService);
 router.post("/", createNoteService);
-router.patch("/:noteId", updateNoteService);
+router.patch("/", updateNoteService);
 router.delete("/", deleteNoteService);
 
 module.exports = router;
