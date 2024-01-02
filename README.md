@@ -83,6 +83,7 @@ curl --location 'https://notesapi-kpj7.onrender.com/api/auth/login' \
   "message": "Logged in successfully :- sambhavjain@gmail.com.",
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTkzOWE0MTgzYjJmOTMxMjRmNmE1OTUiLCJpYXQiOjE3MDQxNzI0NjMsImV4cCI6MTcwNDE3NjA2M30.rI5lIx9ykcacSHMhhxWd_v0e4XP2uRDcNVx1svIrqVA"
 }
+```
 
 ## Get All Notes API
 
@@ -97,7 +98,7 @@ curl --location 'https://notesapi-kpj7.onrender.com/api/auth/login' \
 ### Headers
 ```bash
 	{"Authorization": "Bearer {{token}}"}
-```
+
 
 ### Example
 
