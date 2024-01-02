@@ -75,6 +75,11 @@ curl --location 'https://notesapi-kpj7.onrender.com/api/auth/login' \
 }'
 ```
 
+### Additional Information
+
+- Enter email and password for login.
+- Users will receive a token that is valid for 1 hour.
+
 ### Response
 
 ```json
@@ -99,7 +104,7 @@ curl --location 'https://notesapi-kpj7.onrender.com/api/auth/login' \
 ```bash
 	{"Authorization": "Bearer {{token}}"}
 
-
+```
 ### Example
 
 ```bash
@@ -172,8 +177,3 @@ curl --location 'https://notesapi-kpj7.onrender.com/api/notes/65939df983b2f93124
 - Provide the user's token in the `Authorization` header to authenticate the request.
 - This API will return the specific note of the user if the note belongs to the user.
 ```
-
-### Additional Information
-
-- Enter email and password for login.
-- Users will receive a token that is valid for 1 hour.
