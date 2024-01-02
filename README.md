@@ -46,8 +46,6 @@ curl --location 'https://notesapi-kpj7.onrender.com/api/auth/signup' \
 - Username must be at least 6 characters.
 - Users will receive a token that is valid for 1 hour.
 
-Certainly! Here is the information for your "Login" API formatted in Markdown:
-
 ## Login API
 
 ### Method
@@ -85,6 +83,93 @@ curl --location 'https://notesapi-kpj7.onrender.com/api/auth/login' \
   "message": "Logged in successfully :- sambhavjain@gmail.com.",
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTkzOWE0MTgzYjJmOTMxMjRmNmE1OTUiLCJpYXQiOjE3MDQxNzI0NjMsImV4cCI6MTcwNDE3NjA2M30.rI5lIx9ykcacSHMhhxWd_v0e4XP2uRDcNVx1svIrqVA"
 }
+
+## Get All Notes API
+
+### Method
+
+- **GET**
+
+### URL
+
+- `https://notesapi-kpj7.onrender.com/api/notes`
+
+### Headers
+```bash
+	{"Authorization": "Bearer {{token}}"}
+```
+
+### Example
+
+```bash
+curl --location 'https://notesapi-kpj7.onrender.com/api/notes' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTkzOWE0MTgzYjJmOTMxMjRmNmE1OTUiLCJpYXQiOjE3MDQxNzI0NjMsImV4cCI6MTcwNDE3NjA2M30.rI5lIx9ykcacSHMhhxWd_v0e4XP2uRDcNVx1svIrqVA'
+```
+
+### Response
+
+```json
+{
+  "status": true,
+  "message": "Fetch notes successful",
+  "data": {
+    "username": "sambhav",
+    "email": "sambhavjain@gmail.com",
+    "notes": []
+  }
+}
+```
+
+### Additional Information
+
+- The provided example demonstrates how to make a request to get all notes with a valid token in the `Authorization` header.
+- This API will return all the notes associated with the user.
+
+## Get Specific Note API
+
+### Method
+
+- **GET**
+
+### URL
+
+- `https://notesapi-kpj7.onrender.com/api/notes/{{noteId}}`
+
+### Headers
+```bash
+	{"Authorization": "Bearer {{token}}"}
+```
+### Response
+
+- Returns the specific note of the user if the note belongs to the user.
+
+### Example
+
+```bash
+curl --location 'https://notesapi-kpj7.onrender.com/api/notes/65939df983b2f93124f6a5a8' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTkzOWE0MTgzYjJmOTMxMjRmNmE1OTUiLCJpYXQiOjE3MDQxNzI0NjMsImV4cCI6MTcwNDE3NjA2M30.rI5lIx9ykcacSHMhhxWd_v0e4XP2uRDcNVx1svIrqVA'
+```
+
+### Response
+
+```json
+{
+  "status": true,
+  "message": "Note fetch successful",
+  "data": {
+    "_id": "65939df983b2f93124f6a5a8",
+    "title": "my first title",
+    "content": "my first content",
+    "createdAt": "2024-01-02T05:24:09.778Z",
+    "updatedAt": "2024-01-02T05:24:09.778Z"
+  }
+}
+```
+
+### Additional Information
+
+- Provide the user's token in the `Authorization` header to authenticate the request.
+- This API will return the specific note of the user if the note belongs to the user.
 ```
 
 ### Additional Information
