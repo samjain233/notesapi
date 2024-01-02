@@ -228,3 +228,108 @@ curl --location 'https://notesapi-kpj7.onrender.com/api/notes' \
 - Title should be at least 6 characters long.
 - Content should be at least 6 characters long.
 - Upon successful creation of the note, it will return the ID of the note.
+
+
+
+## Delete Note API
+
+### Method
+
+- **DELETE**
+
+### URL
+
+- `https://notesapi-kpj7.onrender.com/api/notes`
+
+
+### Headers
+```bash
+{"Authorization": "Bearer {{token}}"}
+```
+
+### Request Body
+
+```json
+{
+    "noteId": "{{noteId}}"
+}
+```
+
+### Example
+
+```bash
+curl --location --request DELETE 'https://notesapi-kpj7.onrender.com/api/notes' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTkzOWE0MTgzYjJmOTMxMjRmNmE1OTUiLCJpYXQiOjE3MDQxNzI0NjMsImV4cCI6MTcwNDE3NjA2M30.rI5lIx9ykcacSHMhhxWd_v0e4XP2uRDcNVx1svIrqVA' \
+--data '{
+    "noteId": "65939d1083b2f93124f6a59c"
+}'
+```
+
+### Response
+
+```json
+{
+  "status": true,
+  "message": "Delete note successful - 65939d1083b2f93124f6a59c"
+}
+```
+
+### Additional Information
+
+- Requires a valid `noteId` to be deleted.
+- Only deletes the note if the call is initiated by its owner.
+
+## Update Note API
+
+### Method
+
+- **PATCH**
+
+### URL
+
+- `https://notesapi-kpj7.onrender.com/api/notes`
+
+
+### Headers
+```bash
+{"Authorization": "Bearer {{token}}"}
+```
+
+### Request Body
+
+```json
+{
+    "noteId": "{{noteId}}",
+    "title": "{{title}}",
+    "content": "{{content}}"
+}
+```
+
+### Example
+
+```bash
+curl --location --request PATCH 'https://notesapi-kpj7.onrender.com/api/notes' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTkzOWE0MTgzYjJmOTMxMjRmNmE1OTUiLCJpYXQiOjE3MDQxNzI0NjMsImV4cCI6MTcwNDE3NjA2M30.rI5lIx9ykcacSHMhhxWd_v0e4XP2uRDcNVx1svIrqVA' \
+--data '{
+    "noteId":"65939d1083b2f93124f6a59c",
+    "title":"updated title",
+    "content":"updated content"
+}'
+```
+
+### Response
+
+```json
+{
+  "status": true,
+  "message": "Note updated successfully :- 65939d1083b2f93124f6a59c."
+}
+```
+
+### Additional Information
+
+- `noteId` is a required field.
+- `title` and `content` fields are not mandatory.
+- Whatever field is provided will be updated.
+- `title` must be at least 6 characters long.
+- `content` must be at least 6 characters long.
