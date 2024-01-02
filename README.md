@@ -1,3 +1,11 @@
+# Notes API
+
+ - These Api is used to create , read , update and delete notes of a user.
+ - User first need to signup or login to generate a token.
+ - Then the token generated will be used for authentication and will be valid for 1 hour.
+
+**Base Url** :- https://notesapi-kpj7.onrender.com/
+**Documentation** :- https://documenter.getpostman.com/view/16307845/2s9YsDmb4V
 
 ## Sign Up API
 
